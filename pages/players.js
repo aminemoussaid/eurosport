@@ -12,22 +12,17 @@ import Nav from '../components/nav';
 const Card = () => (
   <div>
     <Head>
-      <title>Home</title>
+      <title>Players Stats</title>
     </Head>
 
     <Nav />
 
 
     <style jsx global>{`
-    .home-container {
-          background-image: url('/static/img/background.jpg');
-          background-position: center;
-          background-size: cover;
-          height: 100vh;
-          padding-top: 50px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+    body {
+          height: 100%;
+          background-color: #0f2936;
+          min-height: 100vh;
         }
   `}</style>
   </div>
