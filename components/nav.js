@@ -25,6 +25,7 @@ const Nav = () => (
           margin-right: 15px;
         }
         a:hover {
+          color: white;
           text-decoration: none;
 
         }

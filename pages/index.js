@@ -16,7 +16,6 @@ class Index extends React.Component {
   static async getInitialProps({ store, isServer }) {
     if (isServer) {
       await axios.get('https://eurosportdigital.github.io/eurosport-web-developer-recruitment/headtohead.json').then((res) => {
-        console.log(res.data);
         store.dispatch(serverFetch(res.data.players))
       });
 
