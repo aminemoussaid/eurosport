@@ -1,6 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
+import axios from 'axios';
+import { serverFetch } from '../store'
+
 import Nav from '../components/nav'
 
 
@@ -9,21 +12,36 @@ import Button from 'react-bootstrap/Button';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Home = () => (
-  <div>
-    <Head>
-      <title>Home</title>
-    </Head>
+class Index extends React.Component {
+  static async getInitialProps({ store, isServer }) {
+    if (isServer) {
+      await axios.get('https://eurosportdigital.github.io/eurosport-web-developer-recruitment/headtohead.json').then((res) => {
+        console.log(res.data);
+        store.dispatch(serverFetch(res.data.players))
+      });
 
-    <Nav />
-    <Container className={"home-container"} fluid={true}>
-      <Link href="/players">
-        <Button variant="outline-light" style={{ fontWeight: 500, height: 'max-content' }}>Check Player Stats</Button>
-      </Link>
-    </Container>
+      return { isServer }
+    }
+    return { isServer }
+  }
 
 
-    <style jsx global>{`
+  render() {
+    return (
+      <div>
+        <Head>
+          <title>Home</title>
+        </Head>
+
+        <Nav />
+        <Container className={"home-container"} fluid={true}>
+          <Link href="/players">
+            <Button variant="outline-light" style={{ fontWeight: 500, height: 'max-content' }}>Check Player Stats</Button>
+          </Link>
+        </Container>
+
+
+        <style jsx global>{`
       .home-container {
             background-image: url('/static/img/background.jpg');
             background-position: center;
@@ -35,7 +53,9 @@ const Home = () => (
             justify-content: center;
           }
     `}</style>
-  </div>
-)
+      </div>
+    )
+  }
+}
 
-export default Home
+export default Index;

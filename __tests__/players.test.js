@@ -18,7 +18,18 @@ describe('Global Test Suite', () => {
     container = mount(<Players store={store} />)
   })
 
+
   it('renders all cards of data players', () => {
     expect(container.find(PlayerCard).length).toEqual(2);
+  });
+
+
+  it('renders cards with player stats - pictures', () => {
+    let container = mount(<PlayerCard player={data[0]} />)
+    expect(container.find('img').length).toEqual(2);
+  });
+  it('renders cards with player stats - name', () => {
+    let container = mount(<PlayerCard player={data[0]} />)
+    expect(container.find('#name').text()).toEqual(`${data[0].firstname} ${data[0].lastname}`);
   });
 });
