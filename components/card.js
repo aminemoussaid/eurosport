@@ -26,22 +26,22 @@ const Card = ({ player }) => {
               </Col>
             </Row>
             <Row>
-              <Col className={"ml-3"}>
-                <Row>
+              <Col xs={12} sm={6}>
+                <Row className={"pl-3"}>
                   Rank: {data.rank}
                 </Row>
-                <Row>
+                <Row className={"pl-3"}>
                   Points: {data.points}
                 </Row>
-                <Row>
+                <Row className={"pl-3"}>
                   Age: {data.age}
                 </Row>
               </Col>
-              <Col>
-                <Row>
+              <Col xs={12} sm={6}>
+                <Row className={"pl-3"}>
                   Weight: {data.weight / 1000} Kg
                 </Row>
-                <Row>
+                <Row className={"pl-3"}>
                   Height: {data.height} cm
                 </Row>
               </Col>
@@ -50,7 +50,7 @@ const Card = ({ player }) => {
         </Row>
 
         <Row>
-          <Col xs={6} className={"item mt-3"}>
+          <Col xs={12} sm={6} className={"item mt-3"}>
 
             <Row className={"d-flex justify-content-center"}>
 
@@ -62,7 +62,7 @@ const Card = ({ player }) => {
 
             </Row>
           </Col>
-          <Col xs={6} className={"item mt-3"}>
+          <Col xs={12} sm={6} className={"item mt-3"}>
             <h4>Last Matches :</h4>
             <h6>{data.last.map((match) => {
               return match === 1 ? 'WIN ' : 'LOSS '
@@ -84,7 +84,8 @@ const Card = ({ player }) => {
         }
 
         .item {
-          border: 1px solid rgba(255,255,255,1);
+          border: 1px solid rgba(255,255,255,0.06);
+          background-color: rgba(255,255,255,0.06);
         }
       `}</style>
 
